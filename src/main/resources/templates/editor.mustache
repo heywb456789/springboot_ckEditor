@@ -5,9 +5,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!--CDN CkEditor-->
+<!--    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>-->
+<!--    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/translations/ko.js"></script>-->
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/translations/ko.js"></script>
+    <!--CkEditor Package-->
+    <script src="/js/ckeditor5-41.3.1/build/ckeditor.js"></script>
 </head>
 <body>
     <form action="/save" method="POST">
@@ -17,7 +20,7 @@
     </form>
 
     <script>
-        ClassicEdirot.create(document.querySelector('#content'), {
+        ClassicEditor.create(document.querySelector('#content'), {
             language: "ko"
         });
     </script>
