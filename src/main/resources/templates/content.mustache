@@ -5,8 +5,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="/js/ckeditor5-41.3.1/build/ckeditor.js"></script>
 </head>
 <body>
+    <input type="text" id="title" name="title" value="{{Content.title}}">
+    <textarea id="content" name="content">{{Content.content}}</textarea>
+    <script>
+        ClassicEditor.create(document.querySelector('#content'), {
+            language: "ko"
+        });
+    </script>
+    <button type="button" id="edit"> 수정 </button>
+    <button type="button" id="delete"> 삭제 </button>
+
+    <script>
+        const btn = document.querySelector("#delete");
+        btn.addEventListener("click", function (){
+            fetch("/content/{{Content.id}}",{
+                method : "DELETE"
+            })
+                .then(response => {
+                    if(response.ok) {
+                        alert("삭제 되었습니다.")
+                        window.location.href = "/list"
+                    }else {
+                        alert("실패 하였습니다. ")
+                    }
+            })
+                .catch((error) => console.log(error));
+
+            }
+        );
+    </script>
 
 </body>
 </html>
